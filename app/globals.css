@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #07070a;
+  --color-cream: #f4efe6;
+  --color-sand: #e9e1d3;
+  --color-loubi: #c8102e;
+  /* Variante éclaircie pour les petits textes sur fond sombre (contraste AA) */
+  --color-loubi-soft: #f0566b;
+  --font-serif: var(--font-serif), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-sans), "Inter", system-ui, sans-serif;
+}
+
+:root {
+  /* Couleurs d'ambiance du slide actif, mises à jour par le carrousel */
+  --amb-base: #07070a;
+  --amb-ink: #f4efe6;
+  --amb-accent: #c8102e;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink);
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Préchargement déjà vu dans cette session : on ne l'affiche pas du tout */
+html[data-preloaded="1"] [data-preloader] {
+  display: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amb-accent, #c8102e);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection {
+  background: #c8102e;
+  color: #f4efe6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
